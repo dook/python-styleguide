@@ -1,0 +1,55 @@
+[nitpick]
+minimum_version = "0.26.0"
+
+[nitpick.styles]
+include = [
+  "flake8.toml",
+  "isort.toml",
+  "darglint.toml",
+  "mypy.toml",
+  "poetry.toml",
+  "black.toml",
+]
+
+[nitpick.files.absent]
+"requirements.txt" = "Install poetry, run 'poetry init' to create pyproject.toml, and move dependencies to it"
+"Pipfile" = "Use pyproject.toml instead"
+"Pipfile.lock" = "Use pyproject.toml instead"
+
+".isort.cfg" = "Move values to setup.cfg, section [isort]"
+".flake8" = "Move values to setup.cfg, section [flake8]"
+"mypy.ini" = "Move values to setup.cfg, section [mypy]"
+
+".pyup.yml" = "Configure .travis.yml with safety instead: https://github.com/pyupio/safety#using-safety-with-a-ci-service"
+
+
+[nitpick.files.present]
+".editorconfig" = "A project should have an editor configuration"
+"CHANGELOG.md" = "A project should have `CHANGELOG.md`"
+"README.md" = "A project should have `README.md`"
+".gitignore" = "A project should have `.gitignore` file"
+".importlinter" = "A project should have import-linter configured"
+
+["setup.cfg".flake8]
+format = "wemake"
+show-source = true
+
+# Plugins:
+max-line-length = 120 
+max-complexity = 6
+inline-quotes = "double"
+
+# Violations:
+ignore = "D100,D104,D401,W504,RST303,RST304,DAR103,DAR203"
+
+["setup.cfg".isort]
+line_length = 90
+include_trailing_comma = true
+use_parentheses = true
+multi_line_output = 3
+force_grid_wrap = 0
+ensure_newline_before_comments = true
+indent = 4
+
+[nitpick.files."setup.cfg"]
+comma_separated_values = ["flake8.ignore"]

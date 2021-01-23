@@ -1,0 +1,31 @@
+[nitpick]
+minimum_version = "0.26.0"
+
+[nitpick.styles]
+include = [
+  "flake8.toml",
+  "isort.toml",
+  "darglint.toml",
+  "mypy.toml",
+  "black.toml",
+]
+
+
+[nitpick.files.absent]
+"Pipfile" = "Use requirements.in instead"
+"Pipfile.lock" = "Use requirements.txt instead"
+
+".isort.cfg" = "Move values to setup.cfg, section [isort]"
+".flake8" = "Move values to setup.cfg, section [flake8]"
+"mypy.ini" = "Move values to setup.cfg, section [mypy]"
+
+".pyup.yml" = "Configure .travis.yml with safety instead: https://github.com/pyupio/safety#using-safety-with-a-ci-service"
+
+
+[nitpick.files.present]
+"requirements.in" = "a project should use pip-tools"
+".editorconfig" = "A project should have an editor configuration"
+"CHANGELOG.md" = "A project should have `CHANGELOG.md`"
+"README.md" = "A project should have `README.md`"
+".gitignore" = "A project should have `.gitignore` file"
+".importlinter" = "A project should have import-linter configured"
